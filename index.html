@@ -78,7 +78,28 @@
       display: grid;
       grid-template-columns: 1.12fr 0.88fr;
       gap: 48px;
+      align-items: start;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-intro {
+      display: flex;
       align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #eadfd3;
+      flex-shrink: 0;
     }
     .eyebrow {
       display: inline-flex;
@@ -337,14 +358,14 @@
 
   <main id="top" class="page">
     <section class="hero">
-      <div style="display:flex; gap:24px; align-items:center; margin-bottom:20px;">
-        <img src="images/ProfilePhotoSruthi.jpg" alt="Sruthi Kondiparthy" style="width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid #eadfd3;" />
-        <div>
-          <div class="eyebrow">Technical PM · Backend Engineer · Frankfurt</div>
-          <h1 style="margin-bottom:10px;">Building AI-driven systems that simplify complex, real-world workflows at scale.</h1>
+      <div class="hero-left">
+        <div class="hero-intro">
+          <img src="images/ProfilePhotoSruthi.jpg" alt="Sruthi Kondiparthy" class="profile-photo" />
+          <div>
+            <div class="eyebrow">Technical PM · Backend Engineer · Frankfurt</div>
+            <h1>Building AI-driven systems that simplify complex, real-world workflows at scale.</h1>
+          </div>
         </div>
-      </div>
-      <div>
         <p>
           I’m Sruthi Kondiparthy — a backend engineer transitioning into product roles, building AI-powered products focused on workflow automation, document understanding, and application systems. I’m actively seeking Technical Product Manager, Junior Product Manager, Backend Engineer, and Python Developer roles in Germany.
         </p>
@@ -360,7 +381,6 @@
           <span class="chip">German B2</span>
         </div>
       </div>
-      
 
       <aside class="hero-card">
         <div class="status-card">
@@ -421,14 +441,13 @@
               </div>
 
               <div class="decision-callout"><strong>Decision Framework:</strong> Product Vision Canvas guided all decisions across target users, needs, product scope, and business goals. Every feature was validated against real expat pain points such as bureaucracy, housing, job search, and integration challenges.</div>
-
+              
               <div class="tech-row">
                 <span class="tech">Flutter</span><span class="tech">TypeScript</span><span class="tech">FastAPI</span><span class="tech">Python</span><span class="tech">Firebase</span><span class="tech">OCR</span>
               </div>
 
               <div class="proof-section">
-                <div class="proof-title">1. Product Screens — execution proof</div>
-                <p class="proof-caption">Use 2–4 screenshots here to show that the idea has moved beyond theory into a real product flow.</p>
+                <div class="proof-title">Product Screens</div>
                 <div class="screenshot-grid">
                   <div class="shot"><img src="images/mygermanfreund-home.png" alt="Mobile app landing screen" /><span>Landing / value proposition screen</span></div>
                   <div class="shot"><img src="images/mygermanfreund-guidance.png" alt="Guided workflow screen" /><span>Guided bureaucracy workflow</span></div>
@@ -436,8 +455,7 @@
               </div>
 
               <div class="proof-section">
-                <div class="proof-title">2. Product Strategy — PM proof</div>
-                <p class="proof-caption">I used the Product Vision Canvas and OKRs to define scope, prioritize MVP features, and connect user pain points to measurable outcomes.</p>
+                <div class="proof-title">Product Strategy</div>
 
                 <div class="north-star">
                   <div class="label">North Star KPI</div>
@@ -495,8 +513,7 @@
               </div>
 
               <div class="proof-section">
-                <div class="proof-title">1. Product Screens — execution proof</div>
-                <p class="proof-caption">These screenshots show the core web experience: landing page, generator workflow, and key features.</p>
+                <div class="proof-title">Product Screens</div>
                 <div class="screenshot-grid">
                   <div class="shot"><img src="images/genr8cv-landing.png" alt="Genr8CV landing page" /><span>Landing page: value proposition and CTA</span></div>
                   <div class="shot"><img src="images/genr8cv-generator.png" alt="Genr8CV generator workflow" /><span>Generator flow: JD input and resume path selection</span></div>
@@ -504,7 +521,7 @@
               </div>
 
               <div class="proof-section">
-                <div class="proof-title">2. Product Roadmap — PM proof</div>
+                <div class="proof-title">Product Roadmap</div>
                 <div class="feature-grid">
                   <div class="feature"><strong>Current Phase</strong><span>Resume + cover letter generation, gap analysis, export flow</span></div>
                   <div class="feature"><strong>Testing Focus</strong><span>JD formats, output quality, latency, PDF/DOCX reliability</span></div>
@@ -542,7 +559,7 @@
       <div class="section-head">
         <div class="section-tag">Core Skills</div>
         <h2>PM + backend + AI systems</h2>
-        <p>My profile is intentionally positioned for Technical Product Manager, Junior Product Manager, Backend Engineer, and Python Developer roles.</p>
+        <p>Positioned primarily for Technical Product Manager roles, with strong supporting capability in backend engineering (Python, FastAPI).</p>
       </div>
       <div class="skills-wrap">
         <div class="skill-card">
@@ -613,8 +630,8 @@
           <p>Open to Technical Product Manager, Junior Product Manager, Backend Engineer, and Python Developer opportunities across Germany, particularly in product-led and API-driven environments.</p>
         </div>
         <div class="contact-links">
-          <a class="btn btn-primary" href="mailto:sruthi.kondiparthy@gmail.com">Email Me</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/sruthi-kondiparthy" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn btn-primary" href="mailto:sruthiravuru@gmail.com">Email Me</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/sruthiravuru" target="_blank" rel="noreferrer">LinkedIn</a>
           <a class="btn btn-secondary" href="https://github.com/SruthiKondiparthy" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </div>

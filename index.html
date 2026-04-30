@@ -247,7 +247,7 @@
     .feature { border: 1px solid var(--line); border-radius: 16px; padding: 14px; background: var(--surface); }
     .feature strong { display: block; margin-bottom: 4px; }
     .feature span { color: var(--muted); font-size: 0.88rem; }
-    .tech-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
     .tech { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem; background: #eee5db; color: #5a5047; padding: 6px 9px; border-radius: 8px; }
 
     .proof-section { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
@@ -367,7 +367,7 @@
           </div>
         </div>
         <p>
-          I’m Sruthi Kondiparthy — a backend engineer transitioning into product roles, building AI-powered products focused on workflow automation, document understanding, and application systems. I’m actively seeking Technical Product Manager, Junior Product Manager, Backend Engineer, and Python Developer roles in Germany.
+          I’m Sruthi Kondiparthy — a backend engineer transitioning into Technical Product Manager roles, building AI-powered products focused on workflow automation, document understanding, and application systems.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">View Portfolio</a>
@@ -403,7 +403,7 @@
       <div class="section-head">
         <div class="section-tag">Selected Work</div>
         <h2>Product Case Studies</h2>
-        <p>Each project demonstrates end-to-end product thinking—from real product screens and clearly defined user problems to decisions, OKRs, and technical implementation.</p>
+        <p>Two AI product case studies showing how I frame problems, define MVP scope, make product decisions, and build backend-driven product experiences.</p>
       </div>
 
       <div class="project-grid">
@@ -412,38 +412,27 @@
             <div class="project-visual alt">
               <div>
                 <div class="visual-title">AI Expat Workflow Assistant</div>
-                <p class="visual-sub">A guided product experience for navigating life-admin workflows in Germany.</p>
+                <p class="visual-sub">A guided assistant for expats navigating bureaucracy and daily-life workflows in Germany.</p>
               </div>
               <div class="flow">
+                <div class="flow-step">Users → Expats, students, skilled workers, families</div>
                 <div class="flow-step">Problem → Bureaucracy, language barriers, scattered information</div>
-                <div class="flow-step">Solution → Guided workflows + AI assistance</div>
-                <div class="flow-step">Build → Flutter UI · TypeScript web · FastAPI backend</div>
+                <div class="flow-step">Solution → Guided workflows, document help, reminders</div>
               </div>
             </div>
+
             <div class="project-content">
               <div class="project-kicker">Case Study 01</div>
-              <h3 class="project-title">AI-powered workflow system for expats relocating to Germany</h3>
-              <p class="project-desc">This case study focuses on simplifying complex administrative journeys through guided workflows, document understanding, reminders, and contextual AI support.</p>
+              <h3 class="project-title">AI-powered relocation workflow system</h3>
+              <p class="project-desc"><strong>Reducing friction in high-stress relocation workflows through guided automation and structured decision support.</strong></p>
+              <p class="project-desc">Designed to simplify high-friction relocation tasks such as Anmeldung, official letters, insurance, banking, housing, and local integration support.</p>
               <span class="status-pill">Phase 1: Core development in progress</span>
 
               <div class="feature-grid">
-                <div class="feature"><strong>Target Users</strong><span>Expats, students, skilled workers, families relocating to Germany</span></div>
-                <div class="feature"><strong>Core Problem</strong><span>Bureaucracy, housing, job search confusion, language barriers</span></div>
-                <div class="feature"><strong>Product Scope</strong><span>Guided workflows, AI assistance, reminders, document support</span></div>
-                <div class="feature"><strong>Status</strong><span>UI, workflows, and backend under active development</span></div>
-              </div>
-
-              <div class="feature-grid">
-                <div class="feature"><strong>Objective</strong><span>Become the go-to digital platform for expats moving to Germany</span></div>
-                <div class="feature"><strong>Growth Targets</strong><span>50K users (12 months), 60% retention (6 months)</span></div>
-                <div class="feature"><strong>Automation Goal</strong><span>Automate 5+ key processes with 90% satisfaction</span></div>
-                <div class="feature"><strong>Business Goal</strong><span>10% conversion + strategic partnerships</span></div>
-              </div>
-
-              <div class="decision-callout"><strong>Decision Framework:</strong> Product Vision Canvas guided all decisions across target users, needs, product scope, and business goals. Every feature was validated against real expat pain points such as bureaucracy, housing, job search, and integration challenges.</div>
-              
-              <div class="tech-row">
-                <span class="tech">Flutter</span><span class="tech">TypeScript</span><span class="tech">FastAPI</span><span class="tech">Python</span><span class="tech">Firebase</span><span class="tech">OCR</span>
+                <div class="feature"><strong>Target Users</strong><span>Expats, international students, skilled workers, and families relocating to Germany.</span></div>
+                <div class="feature"><strong>Core Problem</strong><span>Complex bureaucracy, language barriers, housing friction, and fragmented information.</span></div>
+                <div class="feature"><strong>MVP Scope</strong><span>Guided workflows, letter scanning, translation, reminders, and AI assistance.</span></div>
+                <div class="feature"><strong>Status</strong><span>Mobile UI, web UI, workflows, and backend are under active development.</span></div>
               </div>
 
               <div class="proof-section">
@@ -456,29 +445,24 @@
 
               <div class="proof-section">
                 <div class="proof-title">Product Strategy</div>
-
                 <div class="north-star">
                   <div class="label">North Star KPI</div>
-                  <strong>Daily Active Users</strong>
-                  <span>Driven by completed workflows, successful onboarding, repeat sessions, and guide completions.</span>
+                  <strong>Completed Relocation Workflows</strong>
+                  <span>Measured by onboarding completion, workflow progress, saved reminders, and repeat usage.</span>
                 </div>
 
                 <div class="okr-grid">
-                  <div class="okr-card"><strong>Objective 1 — Adoption</strong><span>Become the go-to digital platform for expats moving to Germany. Target: 50K active users in 12 months; 60% retention after 6 months.</span></div>
-                  <div class="okr-card"><strong>Objective 2 — Automation</strong><span>Streamline bureaucracy by automating 5+ key processes such as Anmeldung, residence permit, and tax registration.</span></div>
-                  <div class="okr-card"><strong>Objective 3 — User Experience</strong><span>Deliver personalized recommendations for bureaucracy, housing, and jobs with 80% relevant content after onboarding.</span></div>
-                  <div class="okr-card"><strong>Objective 4 — Business Growth</strong><span>Convert 10% of free users to paid plans and secure strategic partnerships with relocation agencies and language schools.</span></div>
+                  <div class="okr-card"><strong>Adoption</strong><span>Target 50K active users within 12 months.</span></div>
+                  <div class="okr-card"><strong>Retention</strong><span>Maintain 60% user retention after 6 months.</span></div>
+                  <div class="okr-card"><strong>Automation</strong><span>Automate 5+ bureaucratic workflows with a 90% satisfaction target.</span></div>
+                  <div class="okr-card"><strong>Growth</strong><span>Explore freemium conversion and partnerships with relocation/language providers.</span></div>
                 </div>
 
-                <div class="proof-title" style="margin-top:20px;">Target Audience</div>
-                <div class="audience-grid">
-                  <div class="feature"><strong>Primary Users</strong><span>Expats, international students, skilled workers, and families relocating to Germany.</span></div>
-                  <div class="feature"><strong>Secondary Users</strong><span>HR teams, relocation agencies, and employers supporting international hires.</span></div>
-                  <div class="feature"><strong>Pain Points</strong><span>Bureaucracy, housing barriers, job search uncertainty, healthcare, finances, and social isolation.</span></div>
-                  <div class="feature"><strong>User Need</strong><span>Step-by-step guidance, personalization, clarity, and a sense of belonging.</span></div>
-                </div>
+                <div class="decision-callout"><strong>Key product decision:</strong> Prioritized guided workflows over full automation for Phase 1 to build trust, reduce confusion, and keep the MVP technically feasible.</div>
+              </div>
 
-                <div class="decision-callout"><strong>Key product decision:</strong> Prioritized guided workflows over full automation in the MVP to build user trust, reduce confusion, and keep the product feasible during Phase 1.</div>
+              <div class="tech-row">
+                <span class="tech">Flutter</span><span class="tech">TypeScript</span><span class="tech">FastAPI</span><span class="tech">Python</span><span class="tech">Firebase</span><span class="tech">OCR</span>
               </div>
             </div>
           </div>
@@ -489,46 +473,57 @@
             <div class="project-visual">
               <div>
                 <div class="visual-title">AI Application Preparation Engine</div>
-                <p class="visual-sub">A job application assistant for resumes, cover letters, gap insights, and interview preparation.</p>
+                <p class="visual-sub">A job application assistant for tailored resumes, cover letters, gap insights, and interview preparation.</p>
               </div>
               <div class="flow">
-                <div class="flow-step">Input → Job description + optional resume</div>
-                <div class="flow-step">Analysis → Skills, gaps, ATS signals</div>
-                <div class="flow-step">Output → Resume, cover letter, preparation notes</div>
+                <div class="flow-step">Users → Expats, newcomers, career changers, students</div>
+                <div class="flow-step">Problem → Weak tailoring, ATS uncertainty, interview anxiety</div>
+                <div class="flow-step">Solution → JD analysis, documents, interview answers</div>
               </div>
             </div>
+
             <div class="project-content">
               <div class="project-kicker">Case Study 02</div>
               <h3 class="project-title">AI-driven application preparation system</h3>
-              <p class="project-desc">This product, currently in development, helps expats, newcomers, career changers, and students generate tailored job applications and prepare for German-style interviews.</p>
+              <p class="project-desc"><strong>Helping job seekers move from job description to interview-ready applications with AI-driven personalization.</strong></p>
+              <p class="project-desc">Designed to help job seekers move from a job description to a stronger application package, including tailored documents and German interview preparation.</p>
               <span class="status-pill">Implementation in progress · Testing required</span>
+
               <div class="feature-grid">
-                <div class="feature"><strong>Application Prep</strong><span>JD analysis, tailored resume, cover letter, gap insights</span></div>
-                <div class="feature"><strong>Interview Roadmap</strong><span>German interview Q&A: “Tell me about yourself”, strengths, motivation</span></div>
-                <div class="feature"><strong>Backend API</strong><span>REST endpoint, JSON response, PDF & DOCX generation</span></div>
-                <div class="feature"><strong>Offline AI</strong><span>DeepSeek / Ollama support with OpenAI optional</span></div>
-              </div>
-              <div class="tech-row">
-                <span class="tech">Python 3.12+</span><span class="tech">FastAPI</span><span class="tech">DeepSeek</span><span class="tech">Ollama</span><span class="tech">Jinja2</span><span class="tech">ReportLab</span><span class="tech">Next.js 15</span><span class="tech">React 18</span><span class="tech">TypeScript</span><span class="tech">TailwindCSS</span><span class="tech">Zustand</span><span class="tech">Vercel</span>
+                <div class="feature"><strong>Target Users</strong><span>Expats, newcomers, career changers, and students applying for roles in Germany.</span></div>
+                <div class="feature"><strong>Core Problem</strong><span>Time-consuming applications, unclear role fit, ATS uncertainty, and interview preparation gaps.</span></div>
+                <div class="feature"><strong>MVP Scope</strong><span>JD analysis, tailored resume, cover letter, gap insights, PDF/DOCX export.</span></div>
+                <div class="feature"><strong>Status</strong><span>Backend API, frontend workflow, and document generation are under development.</span></div>
               </div>
 
               <div class="proof-section">
                 <div class="proof-title">Product Screens</div>
                 <div class="screenshot-grid">
-                  <div class="shot"><img src="images/genr8cv-landing.png" alt="Genr8CV landing page" /><span>Landing page: value proposition and CTA</span></div>
-                  <div class="shot"><img src="images/genr8cv-generator.png" alt="Genr8CV generator workflow" /><span>Generator flow: JD input and resume path selection</span></div>
+                  <div class="shot"><img src="images/genr8cv-landing.png" alt="Genr8CV landing page" /><span>Landing / value proposition</span></div>
+                  <div class="shot"><img src="images/genr8cv-generator.png" alt="Genr8CV generator workflow" /><span>Generator workflow</span></div>
                 </div>
               </div>
 
               <div class="proof-section">
-                <div class="proof-title">Product Roadmap</div>
-                <div class="feature-grid">
-                  <div class="feature"><strong>Current Phase</strong><span>Resume + cover letter generation, gap analysis, export flow</span></div>
-                  <div class="feature"><strong>Testing Focus</strong><span>JD formats, output quality, latency, PDF/DOCX reliability</span></div>
-                  <div class="feature"><strong>Next Step</strong><span>German interview preparation tailored to each resume + JD</span></div>
-                  <div class="feature"><strong>Target Users</strong><span>Expats, newcomers, career changers, students</span></div>
+                <div class="proof-title">Product Strategy</div>
+                <div class="north-star">
+                  <div class="label">North Star KPI</div>
+                  <strong>Completed Application Packs</strong>
+                  <span>Measured by generated resumes, cover letters, gap reports, exports, and interview-prep completion.</span>
                 </div>
-                <div class="decision-callout"><strong>Key product decision:</strong> Designed two user paths — users with an existing resume and users starting from only a job description — to reduce friction for different job-seeker situations.</div>
+
+                <div class="okr-grid">
+                  <div class="okr-card"><strong>Completion</strong><span>Help users generate a complete application pack from a job description.</span></div>
+                  <div class="okr-card"><strong>Personalization</strong><span>Tailor outputs to the JD, resume, skills, and target role.</span></div>
+                  <div class="okr-card"><strong>Interview Readiness</strong><span>Add German interview answers for common questions like motivation, strengths, and “Tell me about yourself.”</span></div>
+                  <div class="okr-card"><strong>Reliability</strong><span>Improve PDF/DOCX quality, test multiple JD formats, and reduce generation latency.</span></div>
+                </div>
+
+                <div class="decision-callout"><strong>Key product decision:</strong> Designed two paths — users with an existing resume and users starting only from a job description — to reduce friction for different job-seeker situations.</div>
+              </div>
+
+              <div class="tech-row">
+                <span class="tech">Python 3.12+</span><span class="tech">FastAPI</span><span class="tech">DeepSeek</span><span class="tech">Ollama</span><span class="tech">Next.js</span><span class="tech">TypeScript</span><span class="tech">TailwindCSS</span><span class="tech">Zustand</span><span class="tech">ReportLab</span><span class="tech">python-docx</span><span class="tech">Vercel</span>
               </div>
             </div>
           </div>
@@ -616,7 +611,7 @@
           <div class="timeline-item"><strong>Backend Engineering Foundation</strong><span>7 years of backend engineering experience before career breaks.</span></div>
           <div class="timeline-item"><strong>Product Management Bootcamp</strong><span>Completed PM training and applied it directly to real product case studies.</span></div>
           <div class="timeline-item"><strong>AI Product Development</strong><span>Building AI-driven MVPs using Python, FastAPI, Next.js, TypeScript, Flutter, and local/API-based LLMs.</span></div>
-          <div class="timeline-item"><strong>Current Goal</strong><span>Open to Technical Product Manager, Junior PM, Backend Engineer, and Python Developer roles in Germany.</span></div>
+          <div class="timeline-item"><strong>Current Goal</strong><span>Open to Technical Product Manager and backend-focused product roles in Germany.</span></div>
         </div>
       </div>
     </div>

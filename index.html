@@ -65,7 +65,27 @@ nav {
   letter-spacing:-.02em;
 }
 .nav-logo span { color:var(--terracotta); }
-nav ul { list-style:none; display:flex; gap:2.2rem; }
+nav ul { list-style:none; display:flex; gap:2.2rem; align-items:center; }
+.nav-dropdown { position:relative; }
+.nav-dropdown-menu {
+  position:absolute;
+  top:120%;
+  right:0;
+  background:var(--warm-white);
+  border:1px solid var(--sand);
+  border-radius:12px;
+  padding:.55rem 0;
+  min-width:170px;
+  box-shadow:0 16px 36px rgba(30,26,22,.12);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .22s ease, transform .22s ease, visibility .22s ease;
+}
+.nav-dropdown-menu a { display:block; padding:.55rem 1rem; font-size:.75rem; text-transform:none; letter-spacing:.04em; }
+.nav-dropdown-menu a:hover { background:var(--cream); color:var(--terracotta); }
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu { opacity:1; visibility:visible; transform:translateY(0); }
 nav a {
   color:var(--ink-light);
   font-size:.8rem;
@@ -286,6 +306,11 @@ h2 {
 .card-tagline { font-size:.85rem; color:var(--terracotta); font-weight:500; margin-bottom:.6rem; }
 .card-desc { font-size:.9rem; color:var(--ink-light); line-height:1.7; margin-bottom:1.2rem; }
 .card-desc strong { color:var(--ink); font-weight:500; }
+.role-line { display:inline-flex; align-items:center; gap:.4rem; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rust); background:rgba(196,113,74,.10); border:1px solid rgba(196,113,74,.22); padding:.3rem .7rem; border-radius:100px; margin-bottom:.85rem; font-weight:500; }
+.summary-flow { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; margin:1rem 0 1.2rem; }
+.summary-item { background:var(--warm-white); border:1px solid var(--sand); border-radius:14px; padding:.75rem .85rem; }
+.summary-item strong { display:block; color:var(--terracotta); font-size:.62rem; text-transform:uppercase; letter-spacing:.1em; font-weight:500; margin-bottom:.28rem; }
+.summary-item span { display:block; color:var(--ink-light); font-size:.8rem; line-height:1.5; }
 .lifecycle-bar { display:flex; gap:.3rem; flex-wrap:wrap; margin-bottom:1.2rem; }
 .lc-pill {
   font-size:.62rem;
@@ -355,10 +380,50 @@ details[open] .expand-btn .arrow { transform:rotate(180deg); }
 .process-num { color:var(--terracotta); font-family:'DM Mono',monospace; font-size:.7rem; font-weight:500; margin-bottom:.35rem; }
 .process-card h3 { font-size:.82rem; font-weight:500; margin-bottom:.3rem; }
 .process-card p { color:var(--ink-light); font-size:.76rem; line-height:1.55; }
-.screenshot-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-.shot { text-align:center; }
-.shot img { width:100%; border-radius:14px; border:2px solid var(--sand); display:block; box-shadow:0 6px 20px rgba(30,26,22,.14); }
+.screenshot-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; align-items:start; }
+.shot { text-align:center; position:relative; }
+.shot img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  object-position:top center;
+  border-radius:14px;
+  border:2px solid var(--sand);
+  display:block;
+  box-shadow:0 6px 20px rgba(30,26,22,.14);
+  cursor:zoom-in;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.shot:hover img { transform:translateY(-3px); box-shadow:0 14px 34px rgba(30,26,22,.18); }
 .shot span { display:block; color:var(--ink-light); font-size:.68rem; margin-top:.45rem; }
+.shot::after {
+  content:'';
+  position:fixed;
+  inset:0;
+  background:rgba(30,26,22,.58);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .2s ease, visibility .2s ease;
+  z-index:300;
+  pointer-events:none;
+}
+.shot:hover::after { opacity:1; visibility:visible; }
+.shot:hover img {
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:auto;
+  height:auto;
+  max-width:86vw;
+  max-height:82vh;
+  object-fit:contain;
+  transform:translate(-50%,-50%);
+  z-index:301;
+  background:var(--warm-white);
+  padding:10px;
+  border-radius:18px;
+  box-shadow:0 28px 80px rgba(0,0,0,.35);
+}
 .north-star { background:var(--cream); border:1px solid var(--sand); border-radius:16px; padding:1rem; margin-bottom:.9rem; }
 .north-star .label { font-size:.62rem; text-transform:uppercase; letter-spacing:.1em; color:var(--terracotta); font-weight:500; margin-bottom:.35rem; }
 .north-star strong { display:block; font-family:'Playfair Display',serif; font-size:1.25rem; line-height:1.2; }
@@ -415,12 +480,16 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
   section{padding:4rem 1.5rem;}
   .detail-grid,.okr-grid,.screenshot-grid,.story-grid{grid-template-columns:1fr;}
   .skills-grid{grid-template-columns:1fr 1fr;}
+  .summary-flow{grid-template-columns:1fr;}
   .process-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:560px){
   .card-top,.card-footer{align-items:flex-start;}
   .process-grid{grid-template-columns:1fr;}
   .card-body,.card-detail{padding-left:1.2rem;padding-right:1.2rem;}
+  .shot img{height:150px;}
+  .shot:hover img{position:static; width:100%; height:150px; transform:none; max-width:none; max-height:none; padding:0; object-fit:cover;}
+  .shot:hover::after{display:none;}
 }
 </style>
 </head>
@@ -432,6 +501,13 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
     <li><a href="#projects">Projects</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li class="nav-dropdown">
+      <a href="#">Resume</a>
+      <div class="nav-dropdown-menu">
+        <a href="resume/Sruthi_Resume_EN.pdf" download>Resume (EN)</a>
+        <a href="resume/Sruthi_Resume_DE.pdf" download>Lebenslauf (DE)</a>
+      </div>
+    </li>
   </ul>
 </nav>
 
@@ -439,17 +515,17 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
   <div class="hero-bg1"></div>
   <div class="hero-bg2"></div>
   <div class="hero-text">
-    <div class="eyebrow">Technical PM · Backend Engineer · Frankfurt . Open to work</div>
-    <h1>Building AI-driven systems that simplify <em>complex workflows</em></h1>
-    <p class="hero-desc">I’m Sruthi Kondiparthy — a backend engineer transitioning into Technical Product Manager roles, building AI-powered products focused on workflow automation, document understanding, and application systems.</p>
+    <div class="eyebrow">Technical Product Manager · Backend Systems · Frankfurt</div>
+    <h1>Designing and building <em>AI-driven products</em> that simplify complex systems</h1>
+    <p class="hero-desc">I combine product thinking with backend engineering to build API-driven, AI-powered systems. From user research to shipping, I focus on turning complex workflows into clear, usable products.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">View Portfolio</a>
       <a href="#contact" class="btn-ghost">Contact Me →</a>
     </div>
     <div class="lang-chips">
       <span class="lang-chip de">🇩🇪 German B2</span>
-      <span class="lang-chip">MVP · Product Discovery · Product Strategy</span>
-      <span class="lang-chip">Python · FastAPI · AI Systems</span>
+      <span class="lang-chip">Product Discovery · MVP Execution · OKRs</span>
+      <span class="lang-chip">APIs · Backend Systems · AI Products</span>
     </div>
   </div>
   <div class="hero-visual">
@@ -475,61 +551,114 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
         <div class="card-body">
           <h3 class="card-title">AI-powered relocation workflow system</h3>
           <p class="card-tagline">AI Expat Workflow Assistant</p>
+          <div class="role-line">My Role · Product Manager & Developer</div>
           <p class="card-desc"><strong>Reducing friction in high-stress relocation workflows through guided automation and structured decision support.</strong></p>
-          <p class="card-desc">Designed to simplify high-friction relocation tasks such as Anmeldung, official letters, insurance, banking, housing, and local integration support.</p>
+          <div class="summary-flow">
+            <div class="summary-item"><strong>Problem</strong><span>Expats struggle with bureaucracy, official letters, deadlines, and scattered information.</span></div>
+            <div class="summary-item"><strong>Insight</strong><span>User interviews showed that people need guided clarity before full automation.</span></div>
+            <div class="summary-item"><strong>Decision</strong><span>Prioritized step-by-step workflows and a letter-scanner feature suggested during MVP discussions.</span></div>
+            <div class="summary-item"><strong>Outcome</strong><span>MVP concept validated with 15 participants; Phase 1 build is in progress.</span></div>
+          </div>
           <div class="lifecycle-bar">
             <span class="lc-pill done">Discover</span><span class="lc-pill done">Define</span><span class="lc-pill done">Design</span><span class="lc-pill current">Build</span><span class="lc-pill">Validate</span>
           </div>
           <div class="tags-row">
-            <span class="tag tech">Flutter</span><span class="tag tech">FastAPI</span><span class="tag tech">PostgreSQL</span><span class="tag ai">OCR</span><span class="tag ai">AI Workflows</span>
+            <span class="tag ai">User Interviews</span><span class="tag ai">MVP Validation</span><span class="tag ai">OKRs</span><span class="tag ai">Product Discovery</span><span class="tag tech">API Workflows</span>
           </div>
         </div>
         <div class="card-footer">
-          <span class="expand-btn">Full Story </span>
+          <span class="expand-btn">Full Story <span class="arrow">⌄</span></span>
         </div>
       </summary>
       <div class="card-detail">
-        <div class="detail-grid detail-block">
-          <div class="detail-card"><strong>Target Users</strong><span class="detail-text">Expats, international students, skilled workers, and families relocating to Germany.</span></div>
-          <div class="detail-card"><strong>User Context</strong><span class="detail-text">Users navigating unfamiliar bureaucracy, language barriers, and fragmented information.</span></div>
+
+        <div class="detail-block">
+          <div class="detail-title">Problem Context</div>
+          <div class="detail-text">Expats in Germany face fragmented information, complex bureaucracy, and high cognitive load. User research (5+ interviews) revealed confusion around official processes, language barriers, and lack of structured guidance.</div>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-title">User Insights</div>
+          <div class="detail-text">
+            • Bureaucracy confusion due to unclear forms and long processes<br>
+            • Housing challenges including unfamiliar rental systems<br>
+            • Language barriers in official communication<br>
+            • Cultural adaptation and lack of support networks<br><br>
+            <strong>Key Insight:</strong> Users consistently requested step-by-step guidance, reminders, and simplified language tools.
+          </div>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-title">Market Opportunity</div>
+          <div class="detail-text">
+            TAM: ~10M expats in Germany<br>
+            SAM: ~3M English-speaking newcomers<br>
+            SOM: ~500K initial tech-savvy users<br><br>
+            Revenue: Freemium + premium subscriptions + relocation partnerships
+          </div>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-title">Solution</div>
+          <div class="detail-text">
+            AI-powered platform providing structured guidance across relocation workflows:
+            • Step-by-step bureaucracy checklists<br>
+            • Deadline tracking & reminders<br>
+            • Letter scanner & translator (user-suggested feature)<br>
+            • AI assistant for real-time help<br>
+            • Multilingual support
+          </div>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-title">Product Strategy</div>
+          <div class="detail-text">
+            • User-centric development with continuous feedback loops<br>
+            • Agile iterations with 2-week sprints<br>
+            • Data-driven prioritization<br><br>
+            Roadmap:
+            MVP → Personalization → Advanced features → AI career assistant
+          </div>
         </div>
 
         <div class="detail-block">
           <div class="detail-title">Product Process</div>
           <div class="process-grid">
-            <div class="process-card"><h3>Discover</h3><p>Mapped expat pain points around bureaucracy, housing, language barriers, and integration.</p></div>
-            <div class="process-card"><h3>Define</h3><p>Prioritized relocation workflows where users need step-by-step clarity and reminders.</p></div>
-            <div class="process-card"><h3>Design</h3><p>Designed mobile and web flows for onboarding, guided tasks, document support, and checklist progress.</p></div>
-            <div class="process-card"><h3>Build</h3><p>Developing Flutter UI, TypeScript web UI, FastAPI backend, OCR, and database-backed workflows.</p></div>
-            <div class="process-card"><h3>Validate</h3><p>Next step: test workflows with expats and refine task completion, clarity, and reminder usefulness.</p></div>
+            <div class="process-card"><h3>Discover</h3><p>5+ interviews + lived experience</p></div>
+            <div class="process-card"><h3>Define</h3><p>Focused on clarity over automation</p></div>
+            <div class="process-card"><h3>Design</h3><p>User journeys + workflows</p></div>
+            <div class="process-card"><h3>Build</h3><p>API-driven system + AI features</p></div>
+            <div class="process-card"><h3>Validate</h3><p>15-user MVP validation</p></div>
+          </div>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-title">OKRs & Metrics</div>
+          <div class="north-star">
+            <div class="label">North Star KPI</div>
+            <strong>Completed Relocation Workflows</strong>
+            <span>Measured by successful checklist completion, document processing, and repeat usage.</span>
+          </div>
+          <div class="okr-grid">
+            <div class="okr-card"><strong>Adoption</strong><span>50K users in 12 months, 60% retention in 6 months</span></div>
+            <div class="okr-card"><strong>Automation</strong><span>Automate 5+ key processes with 90% satisfaction</span></div>
+            <div class="okr-card"><strong>User Experience</strong><span>80% relevant personalized guidance post onboarding</span></div>
+            <div class="okr-card"><strong>Business</strong><span>10% conversion + relocation partnerships</span></div>
           </div>
         </div>
 
         <div class="detail-block">
           <div class="detail-title">Product Screens</div>
           <div class="screenshot-grid">
-            <div class="shot"><img src="images/mygermanfreund-home.png" alt="MyGermanFreund landing screen" /><span>Landing screen</span></div>
-            <div class="shot"><img src="images/mygermanfreund-guidance.png" alt="MyGermanFreund guided workflow" /><span>Guided workflow</span></div>
+            <div class="shot"><img src="images/mygermanfreund-landing.png" /><span>Landing & onboarding</span></div>
+            <div class="shot"><img src="images/mygermanfreund-workflow.png" /><span>Guided workflow & tasks</span></div>
           </div>
         </div>
-
-        <div class="detail-block">
-          <div class="detail-title">KPI & OKRs</div>
-          <div class="north-star">
-            <div class="label">North Star KPI</div>
-            <strong>Completed Relocation Workflows</strong>
-            <span>Measured by onboarding completion, workflow progress, saved reminders, and repeat usage.</span>
-          </div>
-          <div class="okr-grid">
-            <div class="okr-card"><strong>Adoption</strong><span>Target 50K active users within 12 months.</span></div>
-            <div class="okr-card"><strong>Retention</strong><span>Maintain 60% user retention after 6 months.</span></div>
-            <div class="okr-card"><strong>Automation</strong><span>Automate 5+ bureaucratic workflows with a 90% satisfaction target.</span></div>
-            <div class="okr-card"><strong>Growth</strong><span>Explore freemium conversion and partnerships with relocation/language providers.</span></div>
-          </div>
         </div>
 
-        <div class="decision-callout"><strong>Key product decision:</strong> Prioritized guided workflows over full automation for Phase 1 to build trust, reduce confusion, and keep the MVP technically feasible.</div>
-        <div class="decision-callout"><strong>Validation & Impact:</strong> Conducted 10 user interviews with expats to identify key pain points. MVP concept validated with 15 participants, confirming the need for step-by-step guided workflows. During these discussions, a native speaker suggested a letter-scanner feature, which was identified as a key opportunity to reduce confusion in handling official documents.</div>
+        <div class="decision-callout"><strong>Key Decision:</strong> Prioritized guided workflows over automation to reduce user anxiety and complexity.</div>
+        <div class="decision-callout"><strong>Validation:</strong> 10 interviews + 15-user MVP validation confirmed strong demand for structured guidance.</div>
+
       </div>
     </details>
 
@@ -541,61 +670,83 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
         <div class="card-body">
           <h3 class="card-title">AI-driven application preparation system</h3>
           <p class="card-tagline">AI Application Preparation Engine</p>
+          <div class="role-line">My Role · Product Manager & Developer</div>
           <p class="card-desc"><strong>Helping job seekers move from job description to interview-ready applications with AI-driven personalization.</strong></p>
-          <p class="card-desc">Designed to help job seekers move from a job description to a stronger application package, including tailored documents and German interview preparation.</p>
+          <div class="summary-flow">
+            <div class="summary-item"><strong>Problem</strong><span>Job seekers struggle to tailor resumes, identify gaps, and prepare for German interviews.</span></div>
+            <div class="summary-item"><strong>Insight</strong><span>Users need different paths depending on whether they already have a resume.</span></div>
+            <div class="summary-item"><strong>Decision</strong><span>Designed two flows: resume-based and job-description-first application preparation.</span></div>
+            <div class="summary-item"><strong>Outcome</strong><span>Early flow testing with 8 users improved clarity and confidence.</span></div>
+          </div>
           <div class="lifecycle-bar">
             <span class="lc-pill done">Discover</span><span class="lc-pill done">Define</span><span class="lc-pill done">Design</span><span class="lc-pill current">Build</span><span class="lc-pill">Validate</span>
           </div>
           <div class="tags-row">
-            <span class="tag tech">FastAPI</span><span class="tag tech">Next.js</span><span class="tag tech">PostgreSQL</span><span class="tag ai">LLMs</span><span class="tag">PDF/DOCX</span>
+            <span class="tag ai">User Testing</span><span class="tag ai">Dual User Flows</span><span class="tag ai">OKRs</span><span class="tag ai">Product Discovery</span><span class="tag tech">API Workflows</span>
           </div>
         </div>
         <div class="card-footer">
-          <span class="expand-btn">Full Story </span>
+          <span class="expand-btn">Full Story <span class="arrow">⌄</span></span>
         </div>
       </summary>
       <div class="card-detail">
-        <div class="detail-grid detail-block">
-          <div class="detail-card"><strong>Target Users</strong><span class="detail-text">Expats, newcomers, career changers, and students applying for roles in Germany.</span></div>
-          <div class="detail-card"><strong>User Context</strong><span class="detail-text">Users facing application friction, unclear role fit, and limited interview readiness.</span></div>
+
+        <div class="detail-block">
+          <div class="detail-title">Problem Context</div>
+          <div class="detail-text">Job seekers face fragmented workflows — understanding requirements, tailoring resumes, and preparing for interviews happen across disconnected tools, increasing effort and reducing confidence.<br><br>
+          <strong>Market:</strong> Growing demand for AI-assisted job preparation tools among international job seekers navigating competitive and localized hiring processes.</div>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-title">Product Direction</div>
+          <div class="detail-grid">
+            <div class="detail-card"><strong>Vision</strong><span class="detail-text">Help users move from job description to interview-ready applications with clarity and confidence.</span></div>
+            <div class="detail-card"><strong>Core Insight</strong><span class="detail-text">Users need structured guidance across resume building, gap analysis, and interview preparation — not just document generation.</span></div>
+          </div>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-title">Solution (MVP Scope)</div>
+          <div class="process-grid">
+            <div class="process-card"><h3>JD Analysis</h3><p>Extract requirements, skills, and keywords from job descriptions.</p></div>
+            <div class="process-card"><h3>Resume Builder</h3><p>Create or optimize resumes based on role requirements.</p></div>
+            <div class="process-card"><h3>Gap Insights</h3><p>Highlight missing skills and alignment gaps.</p></div>
+            <div class="process-card"><h3>Cover Letters</h3><p>Generate personalized application content.</p></div>
+            <div class="process-card"><h3>Interview Prep</h3><p>Provide German-specific interview answers and practice guidance.</p></div>
+          </div>
+        </div>
+
+        <div class="detail-block">
+          <div class="detail-title">Product Experience</div>
+          <div class="screenshot-grid">
+            <div class="shot"><img src="images/genr8cv-landing.png" /><span>Landing</span></div>
+            <div class="shot"><img src="images/genr8cv-generator.png" /><span>Workflow</span></div>
+          </div>
         </div>
 
         <div class="detail-block">
           <div class="detail-title">Product Process</div>
           <div class="process-grid">
-            <div class="process-card"><h3>Discover</h3><p>Identified application friction for international job seekers: tailoring, ATS fit, language, and interview confidence.</p></div>
-            <div class="process-card"><h3>Define</h3><p>Prioritized two user paths: users with an existing resume and users starting from only a job description.</p></div>
-            <div class="process-card"><h3>Design</h3><p>Designed a flow from job description input to application documents, gap insights, and interview preparation.</p></div>
-            <div class="process-card"><h3>Build</h3><p>Developing FastAPI endpoints, LLM generation, Next.js UI, state management, and PDF/DOCX export.</p></div>
-            <div class="process-card"><h3>Validate</h3><p>Next step: test JD formats, document quality, export reliability, latency, and usefulness of interview answers.</p></div>
+            <div class="process-card"><h3>Discover</h3><p>Analyzed user struggles in tailoring applications and interpreting job descriptions.</p></div>
+            <div class="process-card"><h3>Define</h3><p>Defined an end-to-end workflow from job input to interview preparation.</p></div>
+            <div class="process-card"><h3>Design</h3><p>Designed two entry paths to reduce friction based on user context.</p></div>
+            <div class="process-card"><h3>Build</h3><p>Built API-driven backend with LLM integration for document generation.</p></div>
+            <div class="process-card"><h3>Validate</h3><p>User testing confirmed improved clarity in application readiness and decision-making.</p></div>
           </div>
         </div>
 
         <div class="detail-block">
-          <div class="detail-title">Product Screens</div>
-          <div class="screenshot-grid">
-            <div class="shot"><img src="images/genr8cv-landing.png" alt="Genr8CV landing page" /><span>Landing / value proposition</span></div>
-            <div class="shot"><img src="images/genr8cv-generator.png" alt="Genr8CV generator workflow" /><span>Generator workflow</span></div>
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">KPI & OKRs</div>
+          <div class="detail-title">Impact & Metrics</div>
           <div class="north-star">
             <div class="label">North Star KPI</div>
             <strong>Completed Application Packs</strong>
-            <span>Measured by generated resumes, cover letters, gap reports, exports, and interview-prep completion.</span>
-          </div>
-          <div class="okr-grid">
-            <div class="okr-card"><strong>Completion</strong><span>Help users generate a complete application pack from a job description.</span></div>
-            <div class="okr-card"><strong>Personalization</strong><span>Tailor outputs to the JD, resume, skills, and target role.</span></div>
-            <div class="okr-card"><strong>Interview Readiness</strong><span>Add German interview answers for questions like motivation, strengths, weaknesses, and “Tell me about yourself.”</span></div>
-            <div class="okr-card"><strong>Reliability</strong><span>Improve PDF/DOCX quality, test multiple JD formats, and reduce generation latency.</span></div>
+            <span>Measured by generated resumes, cover letters, and interview readiness completion.</span>
           </div>
         </div>
 
-        <div class="decision-callout"><strong>Key product decision:</strong> Designed two paths — users with an existing resume and users starting only from a job description — to reduce friction for different job-seeker situations.</div>
-        <div class="decision-callout"><strong>Validation & Impact:</strong> Tested early flows with 8 job seekers to evaluate usability and clarity. Feedback showed improved understanding of application gaps and increased confidence in preparing tailored resumes and interview responses.</div>
+        <div class="decision-callout"><strong>Key Decision:</strong> Structured the product as an end-to-end workflow rather than isolated tools to reduce fragmentation.</div>
+        <div class="decision-callout"><strong>Validation:</strong> User testing showed clearer identification of skill gaps and higher confidence in interview preparation.</div>
+
       </div>
     </details>
   </div>
@@ -612,21 +763,19 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
       <div class="story-grid">
         <div class="story-text">
           <p>I grew up in India and earned my M.Tech in Computer Science. I spent 7 years as a backend developer, building telecom billing systems at Convergys, working on Motorola’s predictive text engine (iTap), and later developing Python integration pipelines at Studio Hamburg MCI in Germany.</p>
-          <p>Then life shifted — I moved to Germany, raised a child, and built a life in a new country and language. That pause gave me first-hand experience of the complex problems I now solve through products.</p>
-          <p>I returned with a clear focus — completed a Product Management Bootcamp (Digitale Leute, 2025), re-skilled in full-stack development, and built two AI products from zero, owning the full lifecycle from research and design to development and testing.</p>
-          <p>I bring strong engineering depth with product thinking — and take end-to-end ownership from problem definition to shipped solutions.</p>
+
+          <p>I then moved to Germany, raised a child, and built a life in a new country and language. That experience gave me first-hand insight into the complex, fragmented problems I now solve through products — especially around workflows, clarity, and decision-making.</p>
+
+          <p>I returned with a clear focus: completed a Product Management Bootcamp (Digitale Leute, 2025), re-skilled in full-stack development, and built two AI products from zero — owning the full lifecycle from user research and product decisions to backend development and delivery. I bring engineering depth with product thinking, and take end-to-end ownership from problem to shipped solution.</p>
         </div>        
       </div>
       <div class="skills-grid">
-        <span class="skill-chip">Python · FastAPI · SQL</span>
-        <span class="skill-chip">API Design &amp; Integration</span>
-        <span class="skill-chip">LLM Integration &amp; Prompting</span>
-        <span class="skill-chip">Docker · CI/CD · GitHub Actions</span>
-        <span class="skill-chip">Flutter/Dart · Firebase</span>
-        <span class="skill-chip">PostgreSQL · REST APIs</span>
         <span class="skill-chip">Product Strategy &amp; OKRs</span>
         <span class="skill-chip">User Research &amp; JTBD</span>
-        <span class="skill-chip">Roadmapping · Jira · Figma</span>
+        <span class="skill-chip">Python · FastAPI · APIs</span>
+        <span class="skill-chip">LLM Integration &amp; AI Systems</span>
+        <span class="skill-chip">SQL · PostgreSQL</span>
+        <span class="skill-chip">Jira · Miro · Figma · Slack</span>
         <span class="skill-chip">German B2 · English Fluent</span>
       </div>
       <div class="cert-row">
@@ -634,6 +783,71 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
         <span class="cert-badge">🎓 IBM Full Stack Dev 2024</span>
         <span class="cert-badge">🇩🇪 Deutsch B2 — Avicenna 2024</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-header">
+    <div class="section-tag">Experience</div>
+    <h2>Engineering & Product <em>Experience</em></h2>
+    <p class="section-sub">Backend engineering experience aligned to product thinking, system design, and cross-functional collaboration.</p>
+  </div>
+
+  <div class="about-inner">
+    <div class="about-card">
+
+      <div class="detail-block">
+        <div class="detail-title">Studio Hamburg MCI GmbH · Hamburg, Germany (2016–2018)</div>
+        <div class="detail-text">
+          <strong>Rolle:</strong> Softwareentwicklerin (Python) — Internes Produkt „Plato“<br><br>
+          • Weiterentwicklung eines internen Planungstools zur Unterstützung technischer Workflows<br>
+          • Übersetzung von Fachanforderungen in Backend-Funktionalitäten (AutoCAD-basierte Prozesse)<br>
+          • Zusammenarbeit mit Technik-, IT- und Planungsteams zur Verbesserung der Usability<br>
+          • Testing und Validierung neuer Features in produktiven Abläufen<br><br>
+          <strong>Impact:</strong> Effizienzsteigerung interner Planungsprozesse (~30%)<br><br>
+          <strong>Tech:</strong> Python, PostgreSQL, C#, TurboGears, Git, Linux
+        </div>
+      </div>
+      </div>
+
+      <div class="detail-block">
+        <div class="detail-title">Motorola India Pvt. Ltd · Hyderabad, India (2009–2011)</div>
+        <div class="detail-text">
+          <strong>Rolle:</strong> Senior Software Engineer — LTE Systeme<br><br>
+          • Bewertung technischer Umsetzbarkeit neuer Produktfeatures in Abstimmung mit Produktteams<br>
+          • Mitwirkung an Systemdesign und Architektur (IBM Rational Tools)<br>
+          • Entwicklung backendnaher Systeme und Integration von Netzwerkprotokollen (SOAP, SNMP, TCP/IP)<br>
+          • Analyse von Fehlern, Root Cause Analyse und Stabilitätsverbesserungen<br><br>
+          <strong>Impact:</strong> Zuverlässige Backend-Systeme für Telekom-Infrastruktur und erhöhte Systemstabilität
+        </div>
+      </div>
+      </div>
+
+      <div class="detail-block">
+        <div class="detail-title">Motorola India Pvt. Ltd · Hyderabad, India (2006–2009)</div>
+        <div class="detail-text">
+          <strong>Role:</strong> Software Engineer — Network & Input Systems<br><br>
+          • Developed backend modules for WiMAX network management systems
+          • Built cross-platform components for predictive text engine (iTAP)
+          • Worked on system modeling, multithreading, and performance optimization
+          • Handled production issues, debugging, and release cycles<br><br>
+          <strong>Impact:</strong> Contributed to scalable telecom and consumer software systems across platforms
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <div class="detail-title">Convergys · Hyderabad, India (2005–2006)</div>
+        <div class="detail-text">
+          <strong>Rolle:</strong> Systems Analyst — Telekom Billing Systeme<br><br>
+          • Entwicklung von Backend-Funktionalitäten für Abrechnungssysteme<br>
+          • Analyse und Behebung von Produktionsfehlern sowie Stabilitätsverbesserungen<br>
+          • Zusammenarbeit mit internationalen Teams in Design, Entwicklung und Test<br><br>
+          <strong>Impact:</strong> Verbesserte Systemstabilität und Genauigkeit in Abrechnungsprozessen
+        </div>
+      </div>
+      </div>
+
     </div>
   </div>
 </section>

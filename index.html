@@ -260,30 +260,18 @@ h2 {
 
 /* PROJECTS */
 #projects { background:var(--warm-white); }
-.projects-grid { display:grid; grid-template-columns:1fr; gap:2rem; max-width:860px; margin:0 auto; }
+.projects-grid { display:grid; grid-template-columns:1fr; gap:2rem; max-width:920px; margin:0 auto; }
 .project-card {
   background:var(--cream);
   border:1px solid var(--sand);
   border-radius:20px;
   overflow:hidden;
-  transition:transform .3s,box-shadow .3s;
+  transition:box-shadow .25s ease, border-color .25s ease;
 }
-.project-card:hover { transform:translateY(-4px); box-shadow:0 24px 60px rgba(30,26,22,.12); }
+.project-card:hover { box-shadow:0 18px 42px rgba(30,26,22,.10); border-color:#dccdbc; }
 .project-card summary { list-style:none; cursor:pointer; }
 .project-card summary::-webkit-details-marker { display:none; }
-.card-top { padding:1.8rem 1.8rem 0; display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
-.card-logo-svg {
-  width:56px;
-  height:56px;
-  border-radius:12px;
-  background:linear-gradient(135deg,#2C4A8A,#6B4CA0);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.6rem;
-  flex-shrink:0;
-}
-.card-logo-svg.green { background:linear-gradient(135deg,#3D5A47,#2C4A8A); }
+.card-top { padding:1.6rem 1.8rem 0; display:flex; justify-content:flex-end; align-items:flex-start; }
 .card-status {
   font-size:.65rem;
   font-weight:500;
@@ -295,7 +283,7 @@ h2 {
 }
 .status-active { background:#E6F4EC; color:#2A7A4B; }
 .status-beta { background:#FEF3E2; color:#9A6010; }
-.card-body { padding:1.2rem 1.8rem 1.8rem; }
+.card-body { padding:1.1rem 1.8rem 1.6rem; display:flex; flex-direction:column; }
 .card-title {
   font-family:'Playfair Display',serif;
   font-size:1.55rem;
@@ -303,16 +291,15 @@ h2 {
   margin-bottom:.35rem;
   letter-spacing:-.01em;
 }
-.card-tagline { font-size:.85rem; color:var(--terracotta); font-weight:500; margin-bottom:.6rem; }
-.card-desc { font-size:.9rem; color:var(--ink-light); line-height:1.7; margin-bottom:1.2rem; }
+.card-tagline { font-size:.85rem; color:var(--terracotta); font-weight:500; margin-bottom:.65rem; }
+.card-desc { font-size:.9rem; color:var(--ink-light); line-height:1.7; margin-bottom:1rem; }
 .card-desc strong { color:var(--ink); font-weight:500; }
-.role-line { display:inline-flex; align-items:center; gap:.4rem; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rust); background:rgba(196,113,74,.10); border:1px solid rgba(196,113,74,.22); padding:.3rem .7rem; border-radius:100px; margin-bottom:.85rem; font-weight:500; }
-.summary-flow { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; margin:1rem 0 1.2rem; align-items:stretch; }
-.summary-item{min-height:80px;}
-.summary-item { background:var(--warm-white); border:1px solid var(--sand); border-radius:14px; padding:.75rem .85rem; }
+.role-line { display:inline-flex; width:max-content; align-items:center; gap:.4rem; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--rust); background:rgba(196,113,74,.10); border:1px solid rgba(196,113,74,.22); padding:.3rem .7rem; border-radius:100px; margin-bottom:.85rem; font-weight:500; }
+.summary-flow { display:grid; grid-template-columns:repeat(4,1fr); gap:.65rem; margin:1rem 0 1.2rem; align-items:stretch; }
+.summary-item { background:var(--warm-white); border:1px solid var(--sand); border-radius:14px; padding:.75rem .85rem; min-height:118px; }
 .summary-item strong { display:block; color:var(--terracotta); font-size:.62rem; text-transform:uppercase; letter-spacing:.1em; font-weight:500; margin-bottom:.28rem; }
-.summary-item span { display:block; color:var(--ink-light); font-size:.8rem; line-height:1.5; }
-.lifecycle-bar { display:flex; gap:.3rem; flex-wrap:wrap; margin-bottom:1.2rem; }
+.summary-item span { display:block; color:var(--ink-light); font-size:.78rem; line-height:1.48; }
+.lifecycle-bar { display:flex; gap:.3rem; flex-wrap:wrap; margin-bottom:1.1rem; }
 .lc-pill {
   font-size:.62rem;
   font-weight:500;
@@ -326,7 +313,7 @@ h2 {
 }
 .lc-pill.done { background:var(--terracotta); color:#fff; border-color:var(--terracotta); }
 .lc-pill.current { background:var(--amber); color:#fff; border-color:var(--amber); }
-.tags-row { display:flex; gap:.35rem; flex-wrap:wrap; margin-bottom:1.2rem; }
+.tags-row { display:flex; gap:.35rem; flex-wrap:wrap; margin-bottom:0; }
 .tag { font-family:'DM Mono',monospace; font-size:.68rem; padding:.22rem .6rem; border-radius:6px; background:var(--sand); color:var(--ink-light); }
 .tag.ai { background:rgba(196,113,74,.12); color:var(--rust); }
 .tag.tech { background:rgba(44,74,138,.1); color:var(--cobalt); }
@@ -334,10 +321,7 @@ h2 {
   padding:1rem 1.8rem;
   border-top:1px solid var(--sand);
   display:flex;
-  gap:1rem;
-  align-items:center;
-  flex-wrap:wrap;
-  justify-content:space-between;
+  justify-content:flex-end;
 }
 .expand-btn {
   background:none;
@@ -356,12 +340,12 @@ h2 {
 .expand-btn .arrow { transition:transform .25s; display:inline-block; }
 details[open] .expand-btn .arrow { transform:rotate(180deg); }
 .card-detail {
-  padding:1rem 1.8rem 1.6rem;
+  padding:1.25rem 1.8rem 1.7rem;
   background:var(--warm-white);
   border-top:1px solid var(--sand);
-  animation:fadeUp .3s;
+  animation:fadeUp .25s ease;
 }
-@keyframes fadeUp { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:none} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:none} }
 .detail-block { margin-bottom:1.35rem; }
 .detail-title {
   font-size:.68rem;
@@ -382,7 +366,8 @@ details[open] .expand-btn .arrow { transform:rotate(180deg); }
 .process-card h3 { font-size:.82rem; font-weight:500; margin-bottom:.3rem; }
 .process-card p { color:var(--ink-light); font-size:.76rem; line-height:1.55; }
 .screenshot-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; align-items:start; }
-.shot { text-align:center; position:relative; overflow:hidden; }
+.shot { text-align:center; position:relative; }
+.shot a { display:block; }
 .shot img {
   width:100%;
   height:180px;
@@ -391,26 +376,11 @@ details[open] .expand-btn .arrow { transform:rotate(180deg); }
   border-radius:14px;
   border:2px solid var(--sand);
   display:block;
-  box-shadow:0 6px 20px rgba(30,26,22,.14);
-  cursor:zoom-in;
-  transition:transform .35s ease, box-shadow .35s ease;
+  box-shadow:0 6px 18px rgba(30,26,22,.12);
+  transition:transform .22s ease, box-shadow .22s ease;
 }
+.shot img:hover { transform:translateY(-3px); box-shadow:0 16px 32px rgba(30,26,22,.18); }
 .shot span { display:block; color:var(--ink-light); font-size:.68rem; margin-top:.45rem; }
-/* Smooth zoom without flicker */
-.shot:hover img {
-  transform:scale(1.8);
-  z-index:10;
-  position:relative;
-  box-shadow:0 24px 60px rgba(0,0,0,.25);
-}
-/* optional soft backdrop */
-.shot:hover::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(30,26,22,.08);
-  z-index:5;
-}
 .north-star { background:var(--cream); border:1px solid var(--sand); border-radius:16px; padding:1rem; margin-bottom:.9rem; }
 .north-star .label { font-size:.62rem; text-transform:uppercase; letter-spacing:.1em; color:var(--terracotta); font-weight:500; margin-bottom:.35rem; }
 .north-star strong { display:block; font-family:'Playfair Display',serif; font-size:1.25rem; line-height:1.2; }
@@ -419,7 +389,7 @@ details[open] .expand-btn .arrow { transform:rotate(180deg); }
 .okr-card { background:var(--cream); border:1px solid var(--sand); border-radius:14px; padding:.8rem; }
 .okr-card strong { display:block; font-size:.84rem; font-weight:500; margin-bottom:.25rem; }
 .okr-card span { display:block; color:var(--ink-light); font-size:.78rem; line-height:1.55; }
-.decision-callout { background:rgba(196,113,74,.10); border:1px solid rgba(196,113,74,.28); color:var(--ink-light); border-radius:14px; padding:.9rem; font-size:.84rem; line-height:1.65; }
+.decision-callout { background:rgba(196,113,74,.10); border:1px solid rgba(196,113,74,.28); color:var(--ink-light); border-radius:14px; padding:.9rem; font-size:.84rem; line-height:1.65; margin-top:.8rem; }
 .decision-callout strong { color:var(--rust); font-weight:500; }
 
 /* SKILLS */
@@ -431,6 +401,20 @@ details[open] .expand-btn .arrow { transform:rotate(180deg); }
 .cert-badge { font-size:.68rem; padding:.3rem .75rem; border-radius:6px; background:rgba(44,74,138,.1); color:var(--cobalt); font-weight:500; }
 
 /* ABOUT */
+.about-subtitle{
+  margin-top:.6rem;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-light);
+  font-weight:500;
+  display:inline-block;
+  padding:.35rem .8rem;
+  border:1px solid var(--sand);
+  border-radius:100px;
+  background:var(--cream);
+}
+
 #about { max-width:1100px; margin:0 auto; }
 .about-inner { max-width:960px; margin:0 auto; }
 .about-card { background:var(--warm-white); border:1px solid var(--sand); border-radius:24px; padding:2rem; }
@@ -467,21 +451,14 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
   section{padding:4rem 1.5rem;}
   .detail-grid,.okr-grid,.screenshot-grid,.story-grid{grid-template-columns:1fr;}
   .skills-grid{grid-template-columns:1fr 1fr;}
-  .summary-flow{grid-template-columns:1fr;}
+  .summary-flow{grid-template-columns:1fr 1fr;}
   .process-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:560px){
   .card-top,.card-footer{align-items:flex-start;}
-  .process-grid{grid-template-columns:1fr;}
   .card-body,.card-detail{padding-left:1.2rem;padding-right:1.2rem;}
+  .summary-flow,.skills-grid,.process-grid{grid-template-columns:1fr;}
   .shot img{height:150px;}
-  .shot:hover img{transform:none;}
-}
-  .process-grid{grid-template-columns:1fr;}
-  .card-body,.card-detail{padding-left:1.2rem;padding-right:1.2rem;}
-  .shot img{height:150px;}
-  .shot:hover img{position:static; width:100%; height:150px; transform:none; max-width:none; max-height:none; padding:0; object-fit:cover;}
-  .shot:hover::after{display:none;}
 }
 </style>
 </head>
@@ -642,10 +619,9 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
         <div class="detail-block">
           <div class="detail-title">Product Screens</div>
           <div class="screenshot-grid">
-            <div class="shot"><img src="images/mygermanfreund-landing.png" /><span>Landing & onboarding</span></div>
-            <div class="shot"><img src="images/mygermanfreund-workflow.png" /><span>Guided workflow & tasks</span></div>
+            <div class="shot"><a href="images/mygermanfreund-home.png" target="_blank"><img src="images/mygermanfreund-home.png" /></a><span>Landing & onboarding</span></div>
+            <div class="shot"><a href="images/mygermanfreund-guidance.png" target="_blank"><img src="images/mygermanfreund-guidance.png" /></a><span>Guided workflow & tasks</span></div>
           </div>
-        </div>
         </div>
 
         <div class="decision-callout"><strong>Key Decision:</strong> Prioritized guided workflows over automation to reduce user anxiety and complexity.</div>
@@ -711,8 +687,8 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
         <div class="detail-block">
           <div class="detail-title">Product Experience</div>
           <div class="screenshot-grid">
-            <div class="shot"><img src="images/genr8cv-landing.png" /><span>Landing</span></div>
-            <div class="shot"><img src="images/genr8cv-generator.png" /><span>Workflow</span></div>
+            <div class="shot"><a href="images/genr8cv-landing.png" target="_blank"><img src="images/genr8cv-landing.png" /></a><span>Landing</span></div>
+            <div class="shot"><a href="images/genr8cv-generator.png" target="_blank"><img src="images/genr8cv-generator.png" /></a><span>Workflow</span></div>
           </div>
         </div>
 
@@ -748,13 +724,13 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
   <div class="section-header">
       <div class="section-tag">About Me</div>
       <h2>Hi, I'm <em>Sruthi</em></h2>
-      <div class="about-subtitle">Software Engineer · Product Manager · Frankfurt am Main</div>    
+      <div class="about-subtitle">Technical Product Manager · Backend Systems · Frankfurt am Main</div>    
   </div>
   <div class="about-inner">
     <div class="about-card">      
       <div class="story-grid">
         <div class="story-text">
-          <p>I grew up in India and earned my M.Tech in Computer Science. I spent 7 years as a backend developer, building telecom billing systems at Convergys, working on Motorola’s predictive text engine (iTap), and later developing Python integration pipelines at Studio Hamburg MCI in Germany.</p>
+          <p>I grew up in India and earned my M.Tech in Computer Science. I spent 7 years as a backend developer — building telecom billing systems at Convergys, working on Motorola’s predictive text engine (iTap), and later developing Python integration pipelines at Studio Hamburg MCI in Germany.</p>
 
           <p>I then moved to Germany, raised a child, and built a life in a new country and language. That experience gave me first-hand insight into the complex, fragmented problems I now solve through products — especially around workflows, clarity, and decision-making.</p>
 
@@ -775,71 +751,6 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
         <span class="cert-badge">🎓 IBM Full Stack Dev 2024</span>
         <span class="cert-badge">🇩🇪 Deutsch B2 — Avicenna 2024</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="section-header">
-    <div class="section-tag">Experience</div>
-    <h2>Engineering & Product <em>Experience</em></h2>
-    <p class="section-sub">Backend engineering experience aligned to product thinking, system design, and cross-functional collaboration.</p>
-  </div>
-
-  <div class="about-inner">
-    <div class="about-card">
-
-      <div class="detail-block">
-        <div class="detail-title">Studio Hamburg MCI GmbH · Hamburg, Germany (2016–2018)</div>
-        <div class="detail-text">
-          <strong>Rolle:</strong> Softwareentwicklerin (Python) — Internes Produkt „Plato“<br><br>
-          • Weiterentwicklung eines internen Planungstools zur Unterstützung technischer Workflows<br>
-          • Übersetzung von Fachanforderungen in Backend-Funktionalitäten (AutoCAD-basierte Prozesse)<br>
-          • Zusammenarbeit mit Technik-, IT- und Planungsteams zur Verbesserung der Usability<br>
-          • Testing und Validierung neuer Features in produktiven Abläufen<br><br>
-          <strong>Impact:</strong> Effizienzsteigerung interner Planungsprozesse (~30%)<br><br>
-          <strong>Tech:</strong> Python, PostgreSQL, C#, TurboGears, Git, Linux
-        </div>
-      </div>
-      </div>
-
-      <div class="detail-block">
-        <div class="detail-title">Motorola India Pvt. Ltd · Hyderabad, India (2009–2011)</div>
-        <div class="detail-text">
-          <strong>Rolle:</strong> Senior Software Engineer — LTE Systeme<br><br>
-          • Bewertung technischer Umsetzbarkeit neuer Produktfeatures in Abstimmung mit Produktteams<br>
-          • Mitwirkung an Systemdesign und Architektur (IBM Rational Tools)<br>
-          • Entwicklung backendnaher Systeme und Integration von Netzwerkprotokollen (SOAP, SNMP, TCP/IP)<br>
-          • Analyse von Fehlern, Root Cause Analyse und Stabilitätsverbesserungen<br><br>
-          <strong>Impact:</strong> Zuverlässige Backend-Systeme für Telekom-Infrastruktur und erhöhte Systemstabilität
-        </div>
-      </div>
-      </div>
-
-      <div class="detail-block">
-        <div class="detail-title">Motorola India Pvt. Ltd · Hyderabad, India (2006–2009)</div>
-        <div class="detail-text">
-          <strong>Role:</strong> Software Engineer — Network & Input Systems<br><br>
-          • Developed backend modules for WiMAX network management systems
-          • Built cross-platform components for predictive text engine (iTAP)
-          • Worked on system modeling, multithreading, and performance optimization
-          • Handled production issues, debugging, and release cycles<br><br>
-          <strong>Impact:</strong> Contributed to scalable telecom and consumer software systems across platforms
-        </div>
-      </div>
-
-      <div class="detail-block">
-        <div class="detail-title">Convergys · Hyderabad, India (2005–2006)</div>
-        <div class="detail-text">
-          <strong>Rolle:</strong> Systems Analyst — Telekom Billing Systeme<br><br>
-          • Entwicklung von Backend-Funktionalitäten für Abrechnungssysteme<br>
-          • Analyse und Behebung von Produktionsfehlern sowie Stabilitätsverbesserungen<br>
-          • Zusammenarbeit mit internationalen Teams in Design, Entwicklung und Test<br><br>
-          <strong>Impact:</strong> Verbesserte Systemstabilität und Genauigkeit in Abrechnungsprozessen
-        </div>
-      </div>
-      </div>
-
     </div>
   </div>
 </section>

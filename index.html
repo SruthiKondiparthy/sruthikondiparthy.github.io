@@ -460,6 +460,66 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
   .summary-flow,.skills-grid,.process-grid{grid-template-columns:1fr;}
   .shot img{height:150px;}
 }
+
+
+/* IMAGE-ONLY CASE STUDIES */
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.case-study-preview {
+  display: block;
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(30,26,22,.09);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.case-study-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 54px rgba(30,26,22,.14);
+  border-color: #d8c9ba;
+}
+.case-study-preview img {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  background: #fff;
+}
+.case-study-caption {
+  padding: .9rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  background: var(--warm-white);
+  border-top: 1px solid var(--sand);
+  color: var(--ink-light);
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
+.case-study-caption strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.case-study-caption span {
+  color: var(--terracotta);
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+@media(max-width:700px){
+  .case-study-preview img{ height:260px; }
+  .case-study-caption{ align-items:flex-start; flex-direction:column; }
+}
+
 </style>
 </head>
 <body>
@@ -504,219 +564,30 @@ footer { background:var(--ink); padding:1.8rem 3rem; display:flex; justify-conte
   </div>
 </section>
 
+
 <section id="projects">
   <div class="section-header">
     <div class="section-tag">Product Work</div>
     <h2>Product Case <em>Studies</em></h2>
-    <p class="section-sub">AI product case studies showing how I define users, frame problems, make product decisions, and build backend-driven product experiences.</p>
+    <p class="section-sub">Two AI product case studies shown as visual product summaries. Click each preview to open the full case study.</p>
   </div>
 
-  <div class="projects-grid">
-    <details class="project-card">
-      <summary>
-        <div class="card-top">          
-          <span class="card-status status-active">Phase 1 in progress</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">AI-powered relocation workflow system</h3>
-          <p class="card-tagline">AI Expat Workflow Assistant</p>
-          <div class="role-line">My Role · Product Manager & Developer</div>
-          <p class="card-desc"><strong>Reducing friction in high-stress relocation workflows through guided automation and structured decision support.</strong></p>
-          <div class="summary-flow">
-            <div class="summary-item"><strong>Problem</strong><span>Expats struggle with bureaucracy, official letters, deadlines, and scattered information.</span></div>
-            <div class="summary-item"><strong>Insight</strong><span>User interviews showed that people need guided clarity before full automation.</span></div>
-            <div class="summary-item"><strong>Decision</strong><span>Prioritized step-by-step workflows and a letter-scanner feature suggested during MVP discussions.</span></div>
-            <div class="summary-item"><strong>Outcome</strong><span>MVP concept validated with 15 participants; Phase 1 build is in progress.</span></div>
-          </div>
-          <div class="lifecycle-bar">
-            <span class="lc-pill done">Discover</span><span class="lc-pill done">Define</span><span class="lc-pill done">Design</span><span class="lc-pill current">Build</span><span class="lc-pill">Validate</span>
-          </div>
-          <div class="tags-row">
-            <span class="tag ai">User Interviews</span><span class="tag ai">MVP Validation</span><span class="tag ai">OKRs</span><span class="tag ai">Product Discovery</span><span class="tag tech">API Workflows</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span class="expand-btn">Full Story <span class="arrow">⌄</span></span>
-        </div>
-      </summary>
-      <div class="card-detail">
-
-        <div class="detail-block">
-          <div class="detail-title">Problem Context</div>
-          <div class="detail-text">Expats in Germany face fragmented information, complex bureaucracy, and high cognitive load. User research (5+ interviews) revealed confusion around official processes, language barriers, and lack of structured guidance.</div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">User Insights</div>
-          <div class="detail-text">
-            • Bureaucracy confusion due to unclear forms and long processes<br>
-            • Housing challenges including unfamiliar rental systems<br>
-            • Language barriers in official communication<br>
-            • Cultural adaptation and lack of support networks<br><br>
-            <strong>Key Insight:</strong> Users consistently requested step-by-step guidance, reminders, and simplified language tools.
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Market Opportunity</div>
-          <div class="detail-text">
-            TAM: ~10M expats in Germany<br>
-            SAM: ~3M English-speaking newcomers<br>
-            SOM: ~500K initial tech-savvy users<br><br>
-            Revenue: Freemium + premium subscriptions + relocation partnerships
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Solution</div>
-          <div class="detail-text">
-            AI-powered platform providing structured guidance across relocation workflows:
-            • Step-by-step bureaucracy checklists<br>
-            • Deadline tracking & reminders<br>
-            • Letter scanner & translator (user-suggested feature)<br>
-            • AI assistant for real-time help<br>
-            • Multilingual support
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Product Strategy</div>
-          <div class="detail-text">
-            • User-centric development with continuous feedback loops<br>
-            • Agile iterations with 2-week sprints<br>
-            • Data-driven prioritization<br><br>
-            Roadmap:
-            MVP → Personalization → Advanced features → AI career assistant
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Product Process</div>
-          <div class="process-grid">
-            <div class="process-card"><h3>Discover</h3><p>5+ interviews + lived experience</p></div>
-            <div class="process-card"><h3>Define</h3><p>Focused on clarity over automation</p></div>
-            <div class="process-card"><h3>Design</h3><p>User journeys + workflows</p></div>
-            <div class="process-card"><h3>Build</h3><p>API-driven system + AI features</p></div>
-            <div class="process-card"><h3>Validate</h3><p>15-user MVP validation</p></div>
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">OKRs & Metrics</div>
-          <div class="north-star">
-            <div class="label">North Star KPI</div>
-            <strong>Completed Relocation Workflows</strong>
-            <span>Measured by successful checklist completion, document processing, and repeat usage.</span>
-          </div>
-          <div class="okr-grid">
-            <div class="okr-card"><strong>Adoption</strong><span>50K users in 12 months, 60% retention in 6 months</span></div>
-            <div class="okr-card"><strong>Automation</strong><span>Automate 5+ key processes with 90% satisfaction</span></div>
-            <div class="okr-card"><strong>User Experience</strong><span>80% relevant personalized guidance post onboarding</span></div>
-            <div class="okr-card"><strong>Business</strong><span>10% conversion + relocation partnerships</span></div>
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Product Screens</div>
-          <div class="screenshot-grid">
-            <div class="shot"><a href="images/mygermanfreund-home.png" target="_blank"><img src="images/mygermanfreund-home.png" /></a><span>Landing & onboarding</span></div>
-            <div class="shot"><a href="images/mygermanfreund-guidance.png" target="_blank"><img src="images/mygermanfreund-guidance.png" /></a><span>Guided workflow & tasks</span></div>
-          </div>
-        </div>
-
-        <div class="decision-callout"><strong>Key Decision:</strong> Prioritized guided workflows over automation to reduce user anxiety and complexity.</div>
-        <div class="decision-callout"><strong>Validation:</strong> 10 interviews + 15-user MVP validation confirmed strong demand for structured guidance.</div>
-
+  <div class="case-studies-grid">
+    <a class="case-study-preview" href="images/casestudy_1.png" target="_blank" rel="noreferrer">
+      <img src="images/casestudy_1.png" alt="AI-powered relocation workflow system case study" loading="lazy" />
+      <div class="case-study-caption">
+        <strong>AI-powered relocation workflow system</strong>
+        <span>Open full case study ↗</span>
       </div>
-    </details>
+    </a>
 
-    <details class="project-card">
-      <summary>
-        <div class="card-top">          
-          <span class="card-status status-beta">Implementation</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">AI-driven application preparation system</h3>
-          <p class="card-tagline">AI Application Preparation Engine</p>
-          <div class="role-line">My Role · Product Manager & Developer</div>
-          <p class="card-desc"><strong>Helping job seekers move from job description to interview-ready applications with AI-driven personalization.</strong></p>
-          <div class="summary-flow">
-            <div class="summary-item"><strong>Problem</strong><span>Job seekers struggle to tailor resumes, identify gaps, and prepare for German interviews.</span></div>
-            <div class="summary-item"><strong>Insight</strong><span>Users need different paths depending on whether they already have a resume.</span></div>
-            <div class="summary-item"><strong>Decision</strong><span>Designed two flows: resume-based and job-description-first application preparation.</span></div>
-            <div class="summary-item"><strong>Outcome</strong><span>Early flow testing with 8 users improved clarity and confidence.</span></div>
-          </div>
-          <div class="lifecycle-bar">
-            <span class="lc-pill done">Discover</span><span class="lc-pill done">Define</span><span class="lc-pill done">Design</span><span class="lc-pill current">Build</span><span class="lc-pill">Validate</span>
-          </div>
-          <div class="tags-row">
-            <span class="tag ai">User Testing</span><span class="tag ai">Dual User Flows</span><span class="tag ai">OKRs</span><span class="tag ai">Product Discovery</span><span class="tag tech">API Workflows</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span class="expand-btn">Full Story <span class="arrow">⌄</span></span>
-        </div>
-      </summary>
-      <div class="card-detail">
-
-        <div class="detail-block">
-          <div class="detail-title">Problem Context</div>
-          <div class="detail-text">Job seekers face fragmented workflows — understanding requirements, tailoring resumes, and preparing for interviews happen across disconnected tools, increasing effort and reducing confidence.<br><br>
-          <strong>Market:</strong> Growing demand for AI-assisted job preparation tools among international job seekers navigating competitive and localized hiring processes.</div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Product Direction</div>
-          <div class="detail-grid">
-            <div class="detail-card"><strong>Vision</strong><span class="detail-text">Help users move from job description to interview-ready applications with clarity and confidence.</span></div>
-            <div class="detail-card"><strong>Core Insight</strong><span class="detail-text">Users need structured guidance across resume building, gap analysis, and interview preparation — not just document generation.</span></div>
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Solution (MVP Scope)</div>
-          <div class="process-grid">
-            <div class="process-card"><h3>JD Analysis</h3><p>Extract requirements, skills, and keywords from job descriptions.</p></div>
-            <div class="process-card"><h3>Resume Builder</h3><p>Create or optimize resumes based on role requirements.</p></div>
-            <div class="process-card"><h3>Gap Insights</h3><p>Highlight missing skills and alignment gaps.</p></div>
-            <div class="process-card"><h3>Cover Letters</h3><p>Generate personalized application content.</p></div>
-            <div class="process-card"><h3>Interview Prep</h3><p>Provide German-specific interview answers and practice guidance.</p></div>
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Product Experience</div>
-          <div class="screenshot-grid">
-            <div class="shot"><a href="images/genr8cv-landing.png" target="_blank"><img src="images/genr8cv-landing.png" /></a><span>Landing</span></div>
-            <div class="shot"><a href="images/genr8cv-generator.png" target="_blank"><img src="images/genr8cv-generator.png" /></a><span>Workflow</span></div>
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Product Process</div>
-          <div class="process-grid">
-            <div class="process-card"><h3>Discover</h3><p>Analyzed user struggles in tailoring applications and interpreting job descriptions.</p></div>
-            <div class="process-card"><h3>Define</h3><p>Defined an end-to-end workflow from job input to interview preparation.</p></div>
-            <div class="process-card"><h3>Design</h3><p>Designed two entry paths to reduce friction based on user context.</p></div>
-            <div class="process-card"><h3>Build</h3><p>Built API-driven backend with LLM integration for document generation.</p></div>
-            <div class="process-card"><h3>Validate</h3><p>User testing confirmed improved clarity in application readiness and decision-making.</p></div>
-          </div>
-        </div>
-
-        <div class="detail-block">
-          <div class="detail-title">Impact & Metrics</div>
-          <div class="north-star">
-            <div class="label">North Star KPI</div>
-            <strong>Completed Application Packs</strong>
-            <span>Measured by generated resumes, cover letters, and interview readiness completion.</span>
-          </div>
-        </div>
-
-        <div class="decision-callout"><strong>Key Decision:</strong> Structured the product as an end-to-end workflow rather than isolated tools to reduce fragmentation.</div>
-        <div class="decision-callout"><strong>Validation:</strong> User testing showed clearer identification of skill gaps and higher confidence in interview preparation.</div>
-
+    <a class="case-study-preview" href="images/casestudy_2.png" target="_blank" rel="noreferrer">
+      <img src="images/casestudy_2.png" alt="AI-powered application workflow system case study" loading="lazy" />
+      <div class="case-study-caption">
+        <strong>AI-powered application workflow system</strong>
+        <span>Open full case study ↗</span>
       </div>
-    </details>
+    </a>
   </div>
 </section>
 
